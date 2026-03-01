@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +11,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace StudentRegestrationForm
 {
-    public partial class Form1 : Form
+    public partial class StudentRegistrationForm : Form
     {
-        public Form1()
+        public StudentRegistrationForm()
         {
             InitializeComponent();
         }
@@ -39,6 +39,13 @@ namespace StudentRegestrationForm
                 cmbYear.Items.Add(year);
             }
             cmbYear.Text = "-Year-";
+
+            cmbCourse.Items.Add("BS Information Technology");
+            cmbCourse.Items.Add("BS Computer Science");
+            cmbCourse.Items.Add("BS Accountancy");
+            cmbCourse.Items.Add("BS Business Administration");
+            cmbCourse.Items.Add("Bachelor in Multimedia Arts");
+            cmbCourse.Text = "-Course-";
         }
 
         private void textBoxLastName_TextChanged(object sender, EventArgs e)
@@ -63,13 +70,51 @@ namespace StudentRegestrationForm
 
         private void cmbDay_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ComputeAge();
         }
 
         private void cmbMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ComputeAge();
         }
 
         private void cmbYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComputeAge();
+        }
+
+        private void ComputeAge()
+        {
+            if (cmbDay.SelectedItem != null && cmbMonth.SelectedItem != null && cmbYear.SelectedItem != null)
+            {
+                try
+                {
+                    int day = cmbDay.SelectedIndex + 1;
+                    int month = cmbMonth.SelectedIndex + 1;
+                    int year = int.Parse(cmbYear.SelectedItem.ToString());
+                    DateTime birthDate = new DateTime(year, month, day);
+                    DateTime today = DateTime.Today;
+
+                    int age = today.Year - birthDate.Year;
+                    if (birthDate > today.AddYears(-age))
+                    {
+                        age--;
+                    }
+
+                    txtBoxAge.Text = age.ToString();
+                }
+                catch
+                {
+                    txtBoxAge.Text = "";
+                }
+            }
+        }
+
+        private void txtBoxAge_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void cmbCourse_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
 
@@ -133,6 +178,12 @@ namespace StudentRegestrationForm
                 return;
             }
 
+            if (cmbCourse.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a Course.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             try
             {
                 int day = cmbDay.SelectedIndex + 1;
@@ -147,6 +198,8 @@ namespace StudentRegestrationForm
             }
 
             string gender = rbMale.Checked ? "Male" : "Female";
+            string course = cmbCourse.SelectedItem.ToString();
+            string age = txtBoxAge.Text;
 
             string dobDay = cmbDay.SelectedItem.ToString();
             string dobMonth = cmbMonth.SelectedItem.ToString();
@@ -155,7 +208,9 @@ namespace StudentRegestrationForm
 
             string message = "Student name: " + firstName + " " + middleName + " " + lastName + "\n" +
                              "Gender: " + gender + "\n" +
-                             "Date of birth: " + dob;
+                             "Date of birth: " + dob + "\n" +
+                             "Age: " + age + "\n" +
+                             "Course: " + course;
 
             MessageBox.Show(message, "Student Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

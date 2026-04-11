@@ -173,7 +173,6 @@ namespace StudentRegestrationForm
                 return;
             }
 
-            // Validate the date combination (e.g., Feb 30 should be rejected)
             try
             {
                 int day = cmbDay.SelectedIndex + 1;
@@ -191,19 +190,17 @@ namespace StudentRegestrationForm
             string gender = rbMale.Checked ? "Male" : "Female";
             string course = cmbCourse.SelectedItem.ToString();
 
-            // Date of birth format: Day/MonthName/Year  (e.g., 5/August/1994) matching Figure 2
             string dobDay = cmbDay.SelectedItem.ToString();
             string dobMonth = cmbMonth.SelectedItem.ToString();
             string dobYear = cmbYear.SelectedItem.ToString();
             string dob = dobDay + "/" + dobMonth + "/" + dobYear;
 
-            // Full name: FirstName MiddleName LastName
             string fullName = firstName + " " + middleName + " " + lastName;
 
-            // Call all three overloaded methods as required by the lab exercise
-            DisplayStudentInfo(fullName, gender, dob, course);   // Overload 1: full info
-            DisplayStudentInfo(fullName, course);                 // Overload 2: name + program
-            DisplayStudentInfo(firstName, lastName, course);     // Overload 3: first + last + program
+
+            DisplayStudentInfo(fullName, gender, dob, course);
+            DisplayStudentInfo(fullName, course);                 
+            DisplayStudentInfo(firstName, lastName, course);     
         }
     }
 }

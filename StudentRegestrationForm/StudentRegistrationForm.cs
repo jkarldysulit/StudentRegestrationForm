@@ -33,10 +33,11 @@ namespace StudentRegestrationForm
                 cmbYear.Items.Add(year);
             cmbYear.Text = "-Year-";
 
-            cmbCourse.Items.Add("BS Information Technology");
-            cmbCourse.Items.Add("BS Computer Science");
-            cmbCourse.Items.Add("BS Accountancy");
-            cmbCourse.Items.Add("BS Business Administration");
+            // Full program names matching the lab exercise example output (Figure 2)
+            cmbCourse.Items.Add("Bachelor of Science in Information Technology");
+            cmbCourse.Items.Add("Bachelor of Science in Computer Science");
+            cmbCourse.Items.Add("Bachelor of Science in Accountancy");
+            cmbCourse.Items.Add("Bachelor of Science in Business Administration");
             cmbCourse.Items.Add("Bachelor in Multimedia Arts");
             cmbCourse.Text = "-Select program-";
 
@@ -112,56 +113,67 @@ namespace StudentRegestrationForm
             string firstName = textBoxFirstName.Text.Trim();
             string middleName = txtBoxMiddleName.Text.Trim();
 
+            // Validate: names must not contain digits
             foreach (char c in lastName + firstName + middleName)
             {
                 if (char.IsDigit(c))
                 {
-                    MessageBox.Show("Invalid input! Names should not contain numbers.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Invalid input! Names should not contain numbers.",
+                        "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
 
             if (string.IsNullOrWhiteSpace(lastName))
             {
-                MessageBox.Show("Please enter your Last Name.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter your Last Name.",
+                    "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBoxLastName.Focus(); return;
             }
             if (string.IsNullOrWhiteSpace(firstName))
             {
-                MessageBox.Show("Please enter your First Name.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter your First Name.",
+                    "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBoxFirstName.Focus(); return;
             }
             if (string.IsNullOrWhiteSpace(middleName))
             {
-                MessageBox.Show("Please enter your Middle Name.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter your Middle Name.",
+                    "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtBoxMiddleName.Focus(); return;
             }
             if (!rbMale.Checked && !rbFemale.Checked)
             {
-                MessageBox.Show("Please select a Gender.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a Gender.",
+                    "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (cmbDay.SelectedItem == null)
             {
-                MessageBox.Show("Please select a Day.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a Day.",
+                    "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (cmbMonth.SelectedItem == null)
             {
-                MessageBox.Show("Please select a Month.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a Month.",
+                    "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (cmbYear.SelectedItem == null)
             {
-                MessageBox.Show("Please select a Year.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a Year.",
+                    "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (cmbCourse.SelectedItem == null)
             {
-                MessageBox.Show("Please select a Program.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a Program.",
+                    "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            // Validate the date combination (e.g., Feb 30 should be rejected)
             try
             {
                 int day = cmbDay.SelectedIndex + 1;
@@ -171,22 +183,27 @@ namespace StudentRegestrationForm
             }
             catch
             {
-                MessageBox.Show("Invalid date! Please check the Day, Month, and Year.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Invalid date! Please check the Day, Month, and Year.",
+                    "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             string gender = rbMale.Checked ? "Male" : "Female";
             string course = cmbCourse.SelectedItem.ToString();
+
+            // Date of birth format: Day/MonthName/Year  (e.g., 5/August/1994) matching Figure 2
             string dobDay = cmbDay.SelectedItem.ToString();
             string dobMonth = cmbMonth.SelectedItem.ToString();
             string dobYear = cmbYear.SelectedItem.ToString();
             string dob = dobDay + "/" + dobMonth + "/" + dobYear;
+
+            // Full name: FirstName MiddleName LastName
             string fullName = firstName + " " + middleName + " " + lastName;
 
-            // Call all three overloaded methods
-            DisplayStudentInfo(fullName, gender, dob, course);      // Overload 1
-            DisplayStudentInfo(fullName, course);                    // Overload 2
-            DisplayStudentInfo(firstName, lastName, course);         // Overload 3
+            // Call all three overloaded methods as required by the lab exercise
+            DisplayStudentInfo(fullName, gender, dob, course);   // Overload 1: full info
+            DisplayStudentInfo(fullName, course);                 // Overload 2: name + program
+            DisplayStudentInfo(firstName, lastName, course);     // Overload 3: first + last + program
         }
     }
 }

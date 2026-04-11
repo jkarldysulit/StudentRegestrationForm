@@ -1,6 +1,6 @@
 namespace StudentRegestrationForm
 {
-    partial class Form1
+    partial class StudentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@ namespace StudentRegestrationForm
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
             this.lblStudentRegistrationForm = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,10 +47,10 @@ namespace StudentRegestrationForm
             this.cmbCourse = new System.Windows.Forms.ComboBox();
             this.lblCourse = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxStudent = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStudent)).BeginInit();
             this.SuspendLayout();
             // 
             // lblStudentRegistrationForm
@@ -263,41 +263,41 @@ namespace StudentRegestrationForm
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
-            // pictureBox1
+            // pictureBoxStudent
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.pictureBox1.Location = new System.Drawing.Point(582, 111);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(318, 290);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.pictureBoxStudent.Location = new System.Drawing.Point(582, 111);
+            this.pictureBoxStudent.Name = "pictureBoxStudent";
+            this.pictureBoxStudent.Size = new System.Drawing.Size(318, 290);
+            this.pictureBoxStudent.TabIndex = 18;
+            this.pictureBoxStudent.TabStop = false;
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // button1 (Browse)
+            // btnBrowse
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(174)))), ((int)(((byte)(9)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(661, 417);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 36);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Browse";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click); // FIX: wired up Click event
+            this.btnBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(174)))), ((int)(((byte)(9)))));
+            this.btnBrowse.FlatAppearance.BorderSize = 0;
+            this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrowse.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowse.Location = new System.Drawing.Point(661, 417);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(155, 36);
+            this.btnBrowse.TabIndex = 19;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = false;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
-            // Form1
+            // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(11)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(951, 637);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnBrowse);
+            this.Controls.Add(this.pictureBoxStudent);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.lblCourse);
             this.Controls.Add(this.cmbCourse);
@@ -319,12 +319,13 @@ namespace StudentRegestrationForm
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Form1";
+            this.Name = "StudentForm";
             this.Text = "Student Registration Form";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.StudentForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStudent)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -347,8 +348,8 @@ namespace StudentRegestrationForm
         private System.Windows.Forms.ComboBox cmbCourse;
         private System.Windows.Forms.Label lblCourse;
         private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxStudent;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBrowse;
     }
 }

@@ -96,6 +96,7 @@ namespace StudentRegestrationForm
                              "Program: " + program;
             MessageBox.Show(message, "Student Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
         private void DisplayStudentInfo(string firstName, string lastName, string program)
         {
             string message = "Student name: " + firstName + " " + lastName + "\n" +
@@ -192,12 +193,9 @@ namespace StudentRegestrationForm
 
             string fullName = firstName + " " + middleName + " " + lastName;
 
-
-            DisplayStudentInfo(fullName, studGender, dob, studGender);
-            DisplayStudentInfo(fullName, studGender);
-            DisplayStudentInfo(firstName, lastName, studGender);
+            DisplayStudentInfo(fullName, studGender, dob, studCourse);
+            DisplayStudentInfo(fullName, studCourse);
+            DisplayStudentInfo(firstName, lastName, studCourse);
         }
-
-
     }
 }

@@ -1,6 +1,12 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+Pasted content
+7.74 KB •186 lines
+Formatting may be inconsistent from source
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace StudentRegestrationForm
 {

@@ -1,23 +1,24 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-Pasted content
-7.74 KB •186 lines
-Formatting may be inconsistent from source
-using System;
-using System.Drawing;
-using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace StudentRegestrationForm
 {
-    public partial class Form1 : Form
+    public partial class StudentForm : Form
     {
-        public Form1()
+        public StudentForm()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void StudentForm_Load(object sender, EventArgs e)
         {
             for (int day = 1; day <= 31; day++)
                 cmbDay.Items.Add(day);
@@ -33,7 +34,6 @@ namespace StudentRegestrationForm
                 cmbYear.Items.Add(year);
             cmbYear.Text = "-Year-";
 
-            // Full program names matching the lab exercise example output (Figure 2)
             cmbCourse.Items.Add("Bachelor of Science in Information Technology");
             cmbCourse.Items.Add("Bachelor of Science in Computer Science");
             cmbCourse.Items.Add("Bachelor of Science in Accountancy");
@@ -41,7 +41,7 @@ namespace StudentRegestrationForm
             cmbCourse.Items.Add("Bachelor in Multimedia Arts");
             cmbCourse.Text = "-Select program-";
 
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxStudent.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private void cmbDay_SelectedIndexChanged(object sender, EventArgs e) { ComputeAge(); }
@@ -69,7 +69,7 @@ namespace StudentRegestrationForm
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnBrowse_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
             openFileDialog1.Title = "Select a Photo";
@@ -77,11 +77,10 @@ namespace StudentRegestrationForm
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
+                pictureBoxStudent.Image = Image.FromFile(openFileDialog1.FileName);
             }
         }
 
-        // Overload 1: Full info - name, gender, DOB, program
         private void DisplayStudentInfo(string fullName, string gender, string dob, string program)
         {
             string message = "Student name: " + fullName + "\n" +
@@ -91,15 +90,12 @@ namespace StudentRegestrationForm
             MessageBox.Show(message, "Student Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // Overload 2: Name and program only
         private void DisplayStudentInfo(string fullName, string program)
         {
             string message = "Student name: " + fullName + "\n" +
                              "Program: " + program;
             MessageBox.Show(message, "Student Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-        // Overload 3: First name, last name, and program only
         private void DisplayStudentInfo(string firstName, string lastName, string program)
         {
             string message = "Student name: " + firstName + " " + lastName + "\n" +
@@ -113,7 +109,6 @@ namespace StudentRegestrationForm
             string firstName = textBoxFirstName.Text.Trim();
             string middleName = txtBoxMiddleName.Text.Trim();
 
-            // Validate: names must not contain digits
             foreach (char c in lastName + firstName + middleName)
             {
                 if (char.IsDigit(c))
@@ -187,8 +182,8 @@ namespace StudentRegestrationForm
                 return;
             }
 
-            string gender = rbMale.Checked ? "Male" : "Female";
-            string course = cmbCourse.SelectedItem.ToString();
+            string studGender = rbMale.Checked ? "Male" : "Female";
+            string studCourse = cmbCourse.SelectedItem.ToString();
 
             string dobDay = cmbDay.SelectedItem.ToString();
             string dobMonth = cmbMonth.SelectedItem.ToString();
@@ -198,9 +193,11 @@ namespace StudentRegestrationForm
             string fullName = firstName + " " + middleName + " " + lastName;
 
 
-            DisplayStudentInfo(fullName, gender, dob, course);
-            DisplayStudentInfo(fullName, course);                 
-            DisplayStudentInfo(firstName, lastName, course);     
+            DisplayStudentInfo(fullName, studGender, dob, studGender);
+            DisplayStudentInfo(fullName, studGender);
+            DisplayStudentInfo(firstName, lastName, studGender);
         }
+
+
     }
 }

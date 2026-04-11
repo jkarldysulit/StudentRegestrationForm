@@ -168,6 +168,7 @@ namespace StudentRegestrationForm
             this.cmbDay.Name = "cmbDay";
             this.cmbDay.Size = new System.Drawing.Size(121, 28);
             this.cmbDay.TabIndex = 9;
+            this.cmbDay.SelectedIndexChanged += new System.EventHandler(this.cmbDay_SelectedIndexChanged);
             // 
             // lblDateOfBirth
             // 
@@ -190,6 +191,7 @@ namespace StudentRegestrationForm
             this.cmbMonth.Name = "cmbMonth";
             this.cmbMonth.Size = new System.Drawing.Size(121, 28);
             this.cmbMonth.TabIndex = 11;
+            this.cmbMonth.SelectedIndexChanged += new System.EventHandler(this.cmbMonth_SelectedIndexChanged);
             // 
             // cmbYear
             // 
@@ -200,6 +202,7 @@ namespace StudentRegestrationForm
             this.cmbYear.Name = "cmbYear";
             this.cmbYear.Size = new System.Drawing.Size(121, 28);
             this.cmbYear.TabIndex = 12;
+            this.cmbYear.SelectedIndexChanged += new System.EventHandler(this.cmbYear_SelectedIndexChanged);
             // 
             // txtBoxAge
             // 
@@ -272,9 +275,8 @@ namespace StudentRegestrationForm
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-   
             // 
-            // button1
+            // button1 (Browse)
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(174)))), ((int)(((byte)(9)))));
             this.button1.FlatAppearance.BorderSize = 0;
@@ -286,6 +288,7 @@ namespace StudentRegestrationForm
             this.button1.TabIndex = 19;
             this.button1.Text = "Browse";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click); // FIX: wired up Click event
             // 
             // Form1
             // 
@@ -322,7 +325,6 @@ namespace StudentRegestrationForm
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -350,4 +352,3 @@ namespace StudentRegestrationForm
         private System.Windows.Forms.Button button1;
     }
 }
-

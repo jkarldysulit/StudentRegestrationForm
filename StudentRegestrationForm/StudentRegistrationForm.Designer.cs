@@ -251,6 +251,42 @@
         private System.Windows.Forms.ComboBox cmbMonth;
         private System.Windows.Forms.ComboBox cmbYear;
         private System.Windows.Forms.Button btnRegister;
+
+// Add these new control declarations at the top of InitializeComponent():
+this.pictureBoxPhoto = new System.Windows.Forms.PictureBox();
+this.btnBrowse = new System.Windows.Forms.Button();
+this.lblProgram = new System.Windows.Forms.Label();
+
+// pictureBoxPhoto
+this.pictureBoxPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+this.pictureBoxPhoto.Location = new System.Drawing.Point(390, 60);
+this.pictureBoxPhoto.Name = "pictureBoxPhoto";
+this.pictureBoxPhoto.Size = new System.Drawing.Size(150, 160);
+this.pictureBoxPhoto.TabIndex = 20;
+this.pictureBoxPhoto.TabStop = false;
+
+// btnBrowse
+this.btnBrowse.Location = new System.Drawing.Point(456, 230);
+this.btnBrowse.Name = "btnBrowse";
+this.btnBrowse.Size = new System.Drawing.Size(84, 29);
+this.btnBrowse.TabIndex = 21;
+this.btnBrowse.Text = "Browse";
+this.btnBrowse.UseVisualStyleBackColor = true;
+this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+
+// Update lblCourse / cmbCourse label text to "Program to apply *"
+// (just change the existing lblCourse.Text in designer or rename accordingly)
+
+// Add to Controls:
+this.Controls.Add(this.pictureBoxPhoto);
+this.Controls.Add(this.btnBrowse);
+
+// Update ClientSize to accommodate new controls
+this.ClientSize = new System.Drawing.Size(560, 413);
+
+// Add field declarations at the bottom:
+private System.Windows.Forms.PictureBox pictureBoxPhoto;
+private System.Windows.Forms.Button btnBrowse;
     }
 }
 
